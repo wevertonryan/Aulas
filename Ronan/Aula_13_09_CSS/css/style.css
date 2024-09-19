@@ -1,2 +1,66 @@
-.red{  
+*{
+    /* O asterisco aplica o CSS em todos
+        Usamos ele para fazer o reset (limpar)
+        o css padrão do navegador e aplicar um único
+    */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*define o tamanho do elemento*/
+    line-height: 1.5;
+    font-family: "Comic Neue", cursive;
+}
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+p {
+    text-align: center;                                 
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Minecraft', sans-serif;
+}
+.container {
+    padding-left: 20%;
+    padding-right: 20%;
+}
+.card {
+    border: 2px #cccccc solid;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px auto;
+    box-shadow: 0 4px 5px rgb(56, 52, 95);
+}
+    .tamanho-50 {
+    width: 49%;
+    max-width: 49%;
+}
+button {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: 1.5px #cccccc solid;
+    border-radius: 5px;
+    padding: 5px;
+}
+button:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    transform:scale(0.9);
+}
+header, footer{
+    background: var(--primary-color);
+    p {color: var(--secondary-color);}
+    h1, h2, h3, h4, h5, h6 {color: var(--secondary-color);}
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
 }

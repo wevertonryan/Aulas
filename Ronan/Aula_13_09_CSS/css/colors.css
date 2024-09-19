@@ -1,0 +1,17 @@
+:root {
+    /* O ROOT define variaveis que podem ser reutilizadas em todo o documento
+    
+    Asvariaveis começam com --
+    para utilizar var(--nome)
+    */
+    --primary-color: #ffbc0d;
+    --secondary-color: #dc0b1c;
+    --text-color: #232323;
+    --background-color: #f0f0f0;
+}
+.dark-mode {
+    --primary-color: #ffc93f;
+    --secondary-color: #df414e;
+    --text-color: #f0f0f0;
+    --background-color: #232323;
+}
