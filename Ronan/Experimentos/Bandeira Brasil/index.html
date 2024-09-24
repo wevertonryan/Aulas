@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>Bandeira do Brasil</title>
+        <link rel="icon" type="image/jpg" href="Imagens/luffy.jpg">
+        <style>
+            #fundo {
+                height: 200px;
+                width: 300px;
+                background-color: #01923f;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            #losango {
+                height: 150px;
+                width: 220px;
+            }
+            #losango::after {
+                content:'';
+                position: absolute;
+                top: 36px;
+                left: 47px;
+                border-bottom: 74px solid #f8c301;
+                border-left: 111px solid transparent;
+	            border-right: 111px solid transparent;
+            }
+            #losango::before {
+                content:'';
+                position: absolute;
+                top: 109px;
+                left: 47px;
+                border-top: 74px solid #f8c301;
+                border-left: 111px solid transparent;
+	            border-right: 111px solid transparent;
+            }
+            #bola {
+                height: 100px;
+                width: 100px;
+                position: absolute;
+                border-radius: 50%;
+                background-color: #2a176f;
+            }
+            #fita {
+                height: 100px;
+                width: 100px;
+                position: absolute;
+                border-radius: 50%;
+                background-color: white;
+                transform-style: preserve-3d;
+                transform: translate(1px, -5px) rotateZ(10deg) rotateX(75deg);
+            }
+            #fita2 {
+                width: 100px;
+                height: 10px;
+                position: relative;
+                top: 45%;
+                background-color: white;
+                transform: rotatez(10deg);
+            }
+            #fita3 {
+                height: 100px;
+                width: 100px;
+                position: absolute;
+                border-radius: 50%;
+                background-color: #2a176f;
+                transform-style: preserve-3d;
+                transform: translate(-1px, 5px) rotateZ(10deg) rotateX(75deg);
+            }
+        </style>
+    </head>
+    <body>
+        <div id="fundo"><div id="losango"></div><div id="bola"><div id="fita2"></div></div><div id="fita"></div><div id="fita3"></div></div>
+    </body>
+</html>
