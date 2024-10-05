@@ -48,13 +48,13 @@ fimprocedimento
 procedimento qnt (x:real) {o "x" é variavel de valor mais baixo aceitavel}
 inicio
    leia(quant)
-   se (quant > x) entao
-      v <- 0
+   se (quant < 0) entao
+      v <- 1
    senao
-      se (quant > 0) entao
-         v <- 5
+      se (quant >= x) entao
+         v <- 0
       senao
-         v <- 1
+         v <- 5
       fimse
    fimse
 fimprocedimento
@@ -184,12 +184,13 @@ inicio
 
       {verifica se o cliente fez ao menos um pagamento para demonstrar as mensagens abaixo, se ele não fez nem um pagamento é a primeira vez dele entrando naquela aba (eu acho), se ele efetuar algum pagamento e fizer algum outro pedido, e o valor do pedido passar o que ele pagou previamente, então vai aparecer uma mensagem dizendo que o valor que ele pagou previamente agora é insuficiente}
       se pag > 0 entao
+         escreval("Forma de Pagamento: ", form_pag) {mensagem de forma de pagamento}
+         escreval("Valor pago: R$", pag:3:2) {mensagem do valor que foi pago pelo cliente}
          se pag >= total entao
-            escreval("Forma de Pagamento: ", form_pag) {mensagem de forma de pagamento}
-            escreval("Valor pago: R$", pag:3:2) {mensagem do valor que foi pago pelo cliente}
             troco <- pag - total
             escreval("Troco: R$", troco:3:2) {mensagem do valor do troco que o cliente vai receber}
          senao
+            escreval("")
             escreval("Pagamento insuficiente!")
          fimse
          escreval("")
@@ -244,15 +245,25 @@ inicio
       limpatela
       escreval("Forma de Pagamento: ", form_pag)
       escreval("Total a Pagar: R$", total:3:2)
+      se (pag > 0) entao
+         escreval("")
+         escreval("Valor que foi pago: R$", pag:3:2)
+         troco <- pag - total
+         se (troco < 0) entao
+            troco <- total - pag
+            escreval("Valor que falta ser pago: R$", troco:3:2)
+         fimse
+         troco <- pag - total
+      fimse
       vef
       escreval("")
       escreva("Insira o valor que deseja pagar: ")
-      qnt(total) {a quantidade minima a ser a aceita seria o total a ser pago}
+      qnt(total - pag) {a quantidade minima a ser a aceita seria o total a ser pago}
       escreval("")
 
       {condição se, para definir se o valor que o cliente pagou é o suficiente, se for interrompe o loop, do contrario vai continuar o loop até conseguir o valor adequado}
-      se quant >= total entao
-         pag <- quant
+      se ((quant+pag) >= total) e (quant >= 0) entao
+         pag <- pag + quant
          interrompa
       fimse
    ate falso
