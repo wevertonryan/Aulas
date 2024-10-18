@@ -9,10 +9,10 @@ Inicio
       sala <- alunos+1
       
       para i de 1 ate alunos faca
-           escreval("Qual o nome do ", i, "° Aluno?")
+           escreval("Qual o nome do ", i, "Â° Aluno?")
            leia(nome_aluno[i])
            para j de 1 ate 2 faca
-                escreva(j, "° nota do aluno ", nome_aluno[i], ":")
+                escreva(j, "Â° nota do aluno ", nome_aluno[i], ":")
                 leia(nota_aluno[i, j])
                 nota_aluno[sala, j] <- nota_aluno[sala, j] + nota_aluno[i, j]
            fimpara
@@ -25,13 +25,13 @@ Inicio
            escreval("Aluno ", nome_aluno[i], ":")
            escreval("- P1: ", nota_aluno[i, 1])
            escreval("- P2: ", nota_aluno[i, 2])
-           escreval("- Média: ", nota_aluno[i, 3])
+           escreval("- MÃ©dia: ", nota_aluno[i, 3])
            escreval("")
            nota_aluno[sala, 3] <- nota_aluno[sala, 3] + nota_aluno[i, 3]
       fimpara
       
       para j de 1 ate 3 faca
-           nota_aluno[sala, j] <- nota_aluno[sala, j]/7
+           nota_aluno[sala, j] <- nota_aluno[sala, j]/alunos
       fimpara
       
       escreval("Media P1 da Sala: ", nota_aluno[sala, 1]:3:2)
