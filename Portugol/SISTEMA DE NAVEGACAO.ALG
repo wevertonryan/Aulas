@@ -50,12 +50,20 @@ inicio
 fimprocedimento
 
 procedimento menu_gastos
+var
+   gasto_total : real
 inicio
+   gasto_total <- 0
    para i de 1 ate prod_total faca
       se produto.quant_usua[i] > 0 entao
          escreval("[", i:1, "]", produto.nome[i], ": ", produto.quant_usua[i])
+         gasto_total <- gasto_total + (produto.quant_usua[i] * produto.preco[i])
       fimse
    fimpara
+   se gasto_total > 0 entao
+      escreval("")
+   fimse
+   escreval("Gasto Total: R$", gasto_total:3:2)
 fimprocedimento
 
 procedimento menu_dinheiro
