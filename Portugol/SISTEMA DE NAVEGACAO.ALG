@@ -70,6 +70,7 @@ inicio
    caso 1
       escolha sub
       caso 0
+         code <- 0
          menu_comprar
       caso 1, 2
          menu_comp_info
@@ -104,27 +105,42 @@ inicio
       titulo <- "COMPRAR"
       escolha sub
       caso 0
-         se (resp > 0) e (resp <= prod_total) entao
-            sub <- 1
-            code <- resp
+         se(resp > 0) e (resp <= prod_total) entao
+            se produto.quant_limit[resp] > 0 entao
+               se produto.quant_limit[resp] > produto.quant_usua[resp] entao
+                  sub <- 1
+                  code <- resp
+               fimse
+            senao
+               sub <- 1
+               code <- resp
+            fimse
          fimse
          se (resp = 0) entao
             nav <- 0
-            code <- 0
          fimse
       caso 1
          escolha resp
-         caso 1
-            sub <- 2
-         outrocaso
+         caso 0
             sub <- 0
-            nav <- 1
+         caso 1
+            se dinheiro >= produto.preco[code] entao
+               sub <- 2
+            fimse
          fimescolha
       caso 2
-         se resp > 0 entao
-            produto.quant_usua[code] <- produto.quant_usua[code] + resp
-            sub <- 0
-            nav <- 1
+         se (resp > 0) e (dinheiro >= (resp * produto.preco[code])) entao
+            se produto.quant_limit[code] > 0 entao
+               se produto.quant_limit[code] >= (produto.quant_usua[code] + resp) entao
+                  produto.quant_usua[code] <- produto.quant_usua[code] + resp
+                  dinheiro <- dinheiro - (resp * produto.preco[code])
+                  sub <- 1
+               fimse
+            senao
+               produto.quant_usua[code] <- produto.quant_usua[code] + resp
+               dinheiro <- dinheiro - (resp * produto.preco[code])
+               sub <- 1
+            fimse
          fimse
       fimescolha
    caso 2
@@ -172,6 +188,8 @@ Var
    prod_total : inteiro
 
 Inicio
+   dinheiro <- 100000
+
    prod_total <- prod_total + 1
    produto.nome[prod_total] <- "LEITE"
    produto.preco[prod_total] <- 9.99
