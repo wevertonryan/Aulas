@@ -14,21 +14,42 @@ inicio
    opcao[3] <- "GASTOS"
    opcao[4] <- "DINHEIRO"
    opcao[5] <- "SAIR"
+   para i de 1 ate menu.opcoes faca
+      escreval("[", i:1, "] ", opcao[i])
+   fimpara
 fimprocedimento
 
 procedimento menu_comprar
 inicio
+   menu.titulo <- "COMPRAR"
+
 fimprocedimento
 
 procedimento menu_produtos
 inicio
+   menu.titulo <- "PRODUTOS"
 fimprocedimento
 
 procedimento menu_dinheiro
 inicio
+   menu.titulo <- "DINHEIRO"
 fimprocedimento
 
-procedimento fun_opcoes
+procedimento fun_mapeamento(x)
+inicio
+   escolha resp
+   caso 1
+      menu_comprar
+   caso 2
+      menu_produtos
+   caso 3
+      menu_gastos
+   caso 4
+      menu_dinheiro
+   caso 5
+      interrompa
+   fimescolha
+fimprocedimento
 
 tipo caracteristicas = registro
    nome : caracter
@@ -41,7 +62,7 @@ tipo caracteristicas = registro
 fimregistro
 Var
    produtos : vetor [1..5] de caracteristicas
-   i, resp : inteiro
+   i, resp, nav : inteiro
    dinheiro : real
    menu : caracteristicas
    opcao : vetor[1..10] de caracter
